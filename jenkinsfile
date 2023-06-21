@@ -8,14 +8,19 @@ pipeline {
             steps {
                 echo "Running automated tests"
                 sh 'npm install'
-                sh 'cypress:run'
+                sh 'npm run cypress:run'
             }            
         }
 
-        stage('SonarQube analysis') {
+        stage('SonarQube analysis') {        
             steps {
-            // One or more steps need to be included within the steps block.
-            echo "SonarQube analysis"
+                echo "SonarQube analysis"
+                script {
+                    scannerHome = tool 'sonar-scanner';
+                }
+                withSonarQubeEnv('SonarCloud') { // If you have configured more than one global server connection, you can specify its name
+                    sh "${scannerHome}/bin/sonar-scanner"
+                }
             }
         }
 
