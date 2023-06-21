@@ -1,9 +1,5 @@
 pipeline {
       agent any
-
-      options {
-              ansiColor('xterm')
-      }
      
       stages {
         stage('Run automated tests') {
@@ -17,18 +13,21 @@ pipeline {
         stage('SonarQube analysis') {
             steps {
             // One or more steps need to be included within the steps block.
+            echo "SonarQube analysis"
             }
         }
 
         stage('JMeter Test') {
             steps {
             // One or more steps need to be included within the steps block.
+            echo "JMeter Test"
             }
         }
 
         stage('Perform manual testing') {
             steps {
             // One or more steps need to be included within the steps block.
+            echo "Perform manual testing"
             }
         }
 
