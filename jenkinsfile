@@ -18,17 +18,17 @@ pipeline {
             }            
         }
 
-        stage('SonarQube analysis') {        
+        stage('SonarQube analysis') {
             steps {
-                echo "SonarQube analysis"
                 script {
-                    scannerHome = tool 'sonar-scanner';
+                scannerHome = tool 'sonar-scanner';
                 }
-                withSonarQubeEnv('sonar-scanner') { // If you have configured more than one global server connection, you can specify its name
-                    sh "${scannerHome}/bin/sonar-scanner"
+                withSonarQubeEnv('sonar-scanner') { // Replace thisname by the one you setup in the SonarQube Jenkins
+                configuration (step 2)
+                sh "${scannerHome}/bin/sonar-scanner"
+                }
                 }
             }
-        }
 
         stage('JMeter Test') {
             steps {
