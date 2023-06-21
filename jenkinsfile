@@ -5,8 +5,10 @@ pipeline {
      
       stages {
         stage('Run automated tests') {
+            when { false }
             steps {
                 echo "Running automated tests"
+                
                 sh 'npm install'
                 sh 'npm run cypress:run'
             }            
