@@ -1,0 +1,37 @@
+pipeline {
+      agent any
+
+      options {
+              ansiColor('xterm')
+      }
+     
+      stages {
+        stage('Run automated tests') {
+            steps {
+                echo "Running automated tests"
+                sh 'npm install'
+                sh 'cypress:run'
+            }            
+        }
+
+        stage('SonarQube analysis') {
+            steps {
+            // One or more steps need to be included within the steps block.
+            }
+        }
+
+        stage('JMeter Test') {
+            steps {
+            // One or more steps need to be included within the steps block.
+            }
+        }
+
+        stage('Perform manual testing') {
+            steps {
+            // One or more steps need to be included within the steps block.
+            }
+        }
+
+    }
+
+}
