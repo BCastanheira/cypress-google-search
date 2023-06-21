@@ -24,7 +24,6 @@ pipeline {
                     scannerHome = tool 'sonar-scanner'
                 }
                 withSonarQubeEnv('sonar-scanner') { // Replace thisname by the one you setup in the SonarQube Jenkins
-                    configuration (step 2)
                     sh "${scannerHome}/bin/sonar-scanner"
                 }
             }
